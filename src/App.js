@@ -1,13 +1,19 @@
+// import packages
+import { useState, useEffect } from 'react';
+
+// import css and images
 import './App.css';
 import virus from './assets/virus.svg';
 import player from './assets/player.svg';
+
+// import components
+import StartScreen from './StartScreen';
 
 function App() {
   return (
     <div className="App">
       <div className="wrapper">
-        <h1>Vid-Monster</h1>
-        <h2>set up in progress...</h2>
+        <StartScreen></StartScreen>
         <img src={virus} alt="" />
         <img src={player} alt="" />
       </div>
