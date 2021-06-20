@@ -17,7 +17,7 @@ h1 {
 }
 
 button {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   padding: 10px 20px;
   margin-top: 60px;
@@ -28,6 +28,7 @@ button {
 button:hover,
 button:focus {
   background-color: #acacac;
+  cursor: pointer;
 }
 
 form {

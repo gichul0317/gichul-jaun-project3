@@ -186,9 +186,6 @@ canvas {
 template {
   display: none;
 }
-[hidden] {
-  display: none;
-}
 
 .clearfix:after {
   visibility: hidden;
