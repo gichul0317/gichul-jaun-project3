@@ -2,8 +2,9 @@ import './GameScreen.css';
 import virus from './assets/virus.svg';
 import player from './assets/player.svg';
 import { useState } from 'react';
+import React from 'react';
 
-function GameScreen() {
+function GameScreen({ userName }) {
   const [opponentHealth, setOpponentHealth] = useState(100);
   const [playerHealth, setPlayerHealth] = useState(100);
 
@@ -70,7 +71,7 @@ function GameScreen() {
 
       <section className="menu">
         <div className="menu-text">
-          <p>{`what will you do?`}</p>
+          <p>{userName}</p>
         </div>
         <div className="menu-buttons">
           <button onClick={socialDistancing}>Social Distancing</button>
