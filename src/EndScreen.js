@@ -15,6 +15,20 @@ function EndScreen() {
       <ul>
         <li>admin</li>
         <li>Tester</li>
+        <li>admin</li>
+        <li>Tester</li>
+        <li>admin</li>
+        <li>Tester</li>
+        <li>admin</li>
+        <li>Tester</li>
+        <li>admin</li>
+        <li>Tester</li>
+        <li>admin</li>
+        <li>Tester</li>
+        <li>admin</li>
+        <li>Tester</li>
+        <li>admin</li>
+        <li>Tester</li>
       </ul>
       <button>Play Again</button>
     </div>

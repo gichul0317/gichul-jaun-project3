@@ -14,7 +14,7 @@ function StartScreen() {
 
   // update user name state
   const userInput = function (event) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     setUserName(event.target.value);
   };
 
@@ -29,7 +29,7 @@ function StartScreen() {
     } else {
       alert('Please Enter Your Name');
     }
-    setUserName('');
+    // setUserName('');
   };
 
   useEffect(() => {

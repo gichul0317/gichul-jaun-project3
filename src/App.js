@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 // import components
 import StartScreen from './StartScreen';
 import GameScreen from './GameScreen';
+import Footer from './Footer';
+import EndScreen from './EndScreen';
 
 function App() {
   // const [currentComponent, setCurrentComponent] = useState(1);
@@ -27,10 +29,10 @@ function App() {
     <div className="App">
       <div className="wrapper">
         <StartScreen />
-        {/* <StartScreen /> */}
         {/* <GameScreen /> */}
         {/* {currentComponent == 1 && <StartScreen />}
         {currentComponent == 2 && <GameScreen />} */}
+        {/* <EndScreen/> */}
       </div>
       {/* <button
         onClick={() => {
@@ -39,6 +41,7 @@ function App() {
       >
         Start
       </button> */}
+      <Footer/>
     </div>
   );
 }
