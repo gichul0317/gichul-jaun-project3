@@ -131,6 +131,9 @@
   font-size: 0.5rem;
   height: 23%;
   background-color: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .menu-buttons button:hover,

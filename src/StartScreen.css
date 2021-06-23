@@ -16,6 +16,12 @@ h1 {
   letter-spacing: 0.25rem;
 }
 
+.start input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 .start button {
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -23,6 +29,9 @@ h1 {
   margin-top: 60px;
   border: none;
   border-radius: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 button:hover,

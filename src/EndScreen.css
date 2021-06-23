@@ -29,6 +29,9 @@ li button {
 
 .end button {
   align-self: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .play-btn {
