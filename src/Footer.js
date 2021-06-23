@@ -5,7 +5,7 @@ function Footer() {
     <footer>
       <p>
         Gichul Jaun, Created at{' '}
-        <a href="https://junocollege.com/" target="_blank">
+        <a href="https://junocollege.com/" target="_blank" rel="noreferrer">
           Juno
         </a>
       </p>

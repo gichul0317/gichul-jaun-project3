@@ -43,7 +43,7 @@ function StartScreen() {
       }
       setStoredUserName(newArr);
     });
-  }, []);
+  }, [userName]);
 
   // if view component state is true, rendering startscreen
   if (viewComponent) {
