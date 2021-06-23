@@ -36,9 +36,9 @@ function GameScreen({ userName, playerList }) {
       setVidAnimation(true);
       setTimeout(() => {
         setViewComponent(false);
-      }, 2000);
+      }, 1500);
     }
-  });
+  }, [opponentHealth]);
 
   // social distancing button
   const socialDistancing = () => {
