@@ -1,7 +1,7 @@
 import './GameScreen.css';
 import virus from './assets/virus.svg';
 import player from './assets/player.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import gameMusic from './assets/game-playing.mp3';
 import EndScreen from './EndScreen';
 import LoadingScreen from './LoadingScreen';
@@ -25,9 +25,24 @@ function GameScreen({ userName, playerList }) {
   const [disable, setDisable] = useState(false);
   // delay state for loading screen
   const [delay, setDelay] = useState(false);
+  // view component state
+  const [viewComponent, setViewComponent] = useState(true);
 
+  // use effect for finishing the game
+  useEffect(() => {
+    if (opponentHealth <= 0) {
+      setDisable(true);
+      setGameMessage('Finishing Blow!!!');
+      setVidAnimation(true);
+      setTimeout(() => {
+        setViewComponent(false);
+      }, 2000);
+    }
+  });
+
+  // social distancing button
   const socialDistancing = () => {
-    if (opponentHealth !== 0) {
+    if (opponentHealth > 0) {
       setDisable(true);
       setGameMessage('Social Distancing!!!');
       setVidAnimation(true);
@@ -36,7 +51,7 @@ function GameScreen({ userName, playerList }) {
         setVidAnimation(false);
         setGameMessage('Virus Attacking!!!');
         setPlayerAnimation(true);
-        setPlayerHealth(playerHealth - 10);
+        setPlayerHealth(playerHealth - 5);
         setTimeout(() => {
           setDisable(false);
           setPlayerAnimation(false);
@@ -46,17 +61,39 @@ function GameScreen({ userName, playerList }) {
     }
   };
 
+  // wash hands button
   const washHands = () => {
-    if (opponentHealth !== 0) {
+    if (opponentHealth > 0) {
       setDisable(true);
       setGameMessage('Wash Hands!!!');
+      setVidAnimation(true);
+      setOpponentHealth(opponentHealth - 15);
+      setTimeout(() => {
+        setVidAnimation(false);
+        setGameMessage('Virus Attacking!!!');
+        setPlayerAnimation(true);
+        setPlayerHealth(playerHealth - 5);
+        setTimeout(() => {
+          setDisable(false);
+          setPlayerAnimation(false);
+          setGameMessage(`${userName}, what will you do?`);
+        }, 2000);
+      }, 2000);
+    }
+  };
+
+  // mask wear button
+  const maskWearing = () => {
+    if (opponentHealth > 0) {
+      setDisable(true);
+      setGameMessage('Wear a Mask!!!');
       setVidAnimation(true);
       setOpponentHealth(opponentHealth - 20);
       setTimeout(() => {
         setVidAnimation(false);
         setGameMessage('Virus Attacking!!!');
         setPlayerAnimation(true);
-        setPlayerHealth(playerHealth - 10);
+        setPlayerHealth(playerHealth - 5);
         setTimeout(() => {
           setDisable(false);
           setPlayerAnimation(false);
@@ -66,50 +103,31 @@ function GameScreen({ userName, playerList }) {
     }
   };
 
-  const maskWearing = () => {
-    if (opponentHealth !== 0) {
-      setDisable(true);
-      setGameMessage('Wear a Mask!!!');
-      setVidAnimation(true);
-      setOpponentHealth(opponentHealth - 30);
-      setTimeout(() => {
-        setVidAnimation(false);
-        setGameMessage('Virus Attacking!!!');
-        setPlayerAnimation(true);
-        setPlayerHealth(playerHealth - 10);
-        setTimeout(() => {
-          setDisable(false);
-          setPlayerAnimation(false);
-          setGameMessage(`${userName}, what will you do?`);
-        }, 2000);
-      }, 2000);
-    }
-  };
-
+  // vaccine shot button
   const vaccineShot = () => {
-    if (opponentHealth <= 40) {
+    if (opponentHealth <= 40 && opponentHealth > 0) {
       setDisable(true);
       setGameMessage('Vaccinated!!!');
       setVidAnimation(true);
-      setOpponentHealth(opponentHealth - 40);
+      setOpponentHealth(opponentHealth - 25);
       setTimeout(() => {
         setVidAnimation(false);
         setGameMessage('Virus Attacking!!!');
         setPlayerAnimation(true);
-        setPlayerHealth(playerHealth - 10);
+        setPlayerHealth(playerHealth - 5);
         setTimeout(() => {
           setDisable(false);
           setPlayerAnimation(false);
           setGameMessage(`${userName}, what will you do?`);
         }, 2000);
       }, 2000);
-    } else {
+    } else if (opponentHealth > 40) {
       setDisable(true);
       setGameMessage('Not Ready Yet!!!');
       setTimeout(() => {
         setGameMessage('Virus Attacking!!!');
         setPlayerAnimation(true);
-        setPlayerHealth(playerHealth - 10);
+        setPlayerHealth(playerHealth - 5);
         setTimeout(() => {
           setDisable(false);
           setPlayerAnimation(false);
@@ -119,17 +137,8 @@ function GameScreen({ userName, playerList }) {
     }
   };
 
-  // const endScreenLoad = () => {
-  //   if (!delay) {
-  //     return null;
-  //   } else {
-  //     return <EndScreen />;
-  //   }
-  // };
-
-  console.log(opponentHealth);
-
-  if (opponentHealth > 0) {
+  // if viewcomponent is true, rendering gamescreen
+  if (viewComponent) {
     backgroundMusic.play();
     return (
       <div className="game">
@@ -202,7 +211,8 @@ function GameScreen({ userName, playerList }) {
         </section>
       </div>
     );
-  } else if (opponentHealth <= 0) {
+    // if view component is false, rendering loading screen and then end screen
+  } else {
     backgroundMusic.pause();
     backgroundMusic.currentTime = 0;
     setTimeout(() => {
@@ -213,7 +223,6 @@ function GameScreen({ userName, playerList }) {
     } else {
       return <EndScreen playerList={playerList} />;
     }
-    // return <EndScreen />;
   }
 }
 

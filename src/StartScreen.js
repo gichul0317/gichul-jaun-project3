@@ -2,6 +2,7 @@ import './StartScreen.css';
 import { useEffect, useState } from 'react';
 import firebase from './firebase';
 import GameScreen from './GameScreen';
+import LoadingScreen from './LoadingScreen';
 
 const dbRef = firebase.database().ref();
 
@@ -12,6 +13,8 @@ function StartScreen() {
   const [userName, setUserName] = useState('');
   // component display state
   const [viewComponent, setViewComponent] = useState(true);
+  // delay state for loading screen
+  const [delay, setDelay] = useState(false);
 
   // update user name state
   const userInput = function (event) {
@@ -29,7 +32,6 @@ function StartScreen() {
     } else {
       alert('Please Enter Your Name');
     }
-    // setUserName('');
   };
 
   useEffect(() => {
@@ -37,9 +39,7 @@ function StartScreen() {
       const newArr = [];
       const data = res.val();
       for (let key in data) {
-        if (userName !== data[key]) {
-          newArr.push({ key: key, name: data[key] });
-        }
+        newArr.push({ key: key, name: data[key] });
       }
       setStoredUserName(newArr);
     });
@@ -68,15 +68,17 @@ function StartScreen() {
         </form>
       </div>
     );
-    // if view component state is false, rendering gamescreen
+    // if view component state is false, rendering loading screen and then gamescreen
   } else {
-    return <GameScreen userName={userName} playerList={storedUserName} />;
+    setTimeout(() => {
+      setDelay(true);
+    }, 2000);
+    if (!delay) {
+      return <LoadingScreen />;
+    } else {
+      return <GameScreen userName={userName} playerList={storedUserName} />;
+    }
   }
 }
 
 export default StartScreen;
-
-// if same name exists in the dbRef, alert and ask
-// opacity effect in startscreen
-// delay endscreen rendering so player can see
-// virus animation

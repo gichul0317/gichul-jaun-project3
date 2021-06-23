@@ -15,7 +15,6 @@ function EndScreen({ playerList }) {
   const deletePlayerList = (key) => {
     dbRef.child(key).remove();
   };
-
   // if viewcomponent state is true, rendering endscreen
   if (viewComponent) {
     gameClearMusic.play();
