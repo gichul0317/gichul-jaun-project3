@@ -119,13 +119,13 @@ function GameScreen({ userName, playerList }) {
     }
   };
 
-  const endScreenLoad = () => {
-    if (!delay) {
-      return null;
-    } else {
-      return <EndScreen />;
-    }
-  };
+  // const endScreenLoad = () => {
+  //   if (!delay) {
+  //     return null;
+  //   } else {
+  //     return <EndScreen />;
+  //   }
+  // };
 
   console.log(opponentHealth);
 
