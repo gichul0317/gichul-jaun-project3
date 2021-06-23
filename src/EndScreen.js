@@ -5,34 +5,34 @@
 
 // add play music functionality in startscreen
 
-import GameScreen from './GameScreen';
 import './EndScreen.css';
+import { useState } from 'react';
+import StartScreen from './StartScreen';
 
-function EndScreen() {
-  return (
-    <div className="end">
-      <h1>Players Won</h1>
-      <ul>
-        <li>admin</li>
-        <li>Tester</li>
-        <li>admin</li>
-        <li>Tester</li>
-        <li>admin</li>
-        <li>Tester</li>
-        <li>admin</li>
-        <li>Tester</li>
-        <li>admin</li>
-        <li>Tester</li>
-        <li>admin</li>
-        <li>Tester</li>
-        <li>admin</li>
-        <li>Tester</li>
-        <li>admin</li>
-        <li>Tester</li>
-      </ul>
-      <button>Play Again</button>
-    </div>
-  );
+function EndScreen({ playerList }) {
+  const [viewComponent, setViewComponent] = useState(true);
+
+  if (viewComponent) {
+    return (
+      <div className="end">
+        <h1>Players Won</h1>
+        <ul>
+          {playerList.map((item) => {
+            return <li key={item.key}>{item.name}</li>;
+          })}
+        </ul>
+        <button
+          onClick={() => {
+            setViewComponent(false);
+          }}
+        >
+          Play Again
+        </button>
+      </div>
+    );
+  } else {
+    return <StartScreen />;
+  }
 }
 
 export default EndScreen;

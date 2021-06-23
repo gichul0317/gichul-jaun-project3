@@ -1,12 +1,18 @@
 import './GameScreen.css';
 import virus from './assets/virus.svg';
 import player from './assets/player.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
+import gameMusic from './assets/game-playing.mp3';
+import endMusic from './assets/game-clear.mp3';
 
 import EndScreen from './EndScreen';
 
-function GameScreen({ userName }) {
+const backgroundMusic = new Audio(gameMusic);
+const gameClearMusic = new Audio(endMusic);
+
+function GameScreen({ userName, playerList }) {
+  // console.log(playerList);
   // game console message state
   const [gameMessage, setGameMessage] = useState(
     `${userName}, what will you do?`
@@ -21,6 +27,13 @@ function GameScreen({ userName }) {
   const [playerAnimation, setPlayerAnimation] = useState(false);
   // button disable sate
   const [disable, setDisable] = useState(false);
+
+  const [delay, setDelay] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setDelay(true);
+    }, 5000);
+  }, [delay]);
 
   const socialDistancing = () => {
     if (opponentHealth !== 0) {
@@ -115,9 +128,20 @@ function GameScreen({ userName }) {
     }
   };
 
-  if (opponentHealth <= 0) {
-    setOpponentHealth(100);
-    setPlayerHealth(100);
+  const endScreenLoad = () => {
+    if (!delay) {
+      return null;
+    } else {
+      return <EndScreen />;
+    }
+  };
+
+  console.log(opponentHealth);
+
+  if (opponentHealth > 0) {
+    // setOpponentHealth(100);
+    // setPlayerHealth(100);
+    backgroundMusic.play();
     return (
       <div className="game">
         <section className="vidMonster">
@@ -189,8 +213,16 @@ function GameScreen({ userName }) {
         </section>
       </div>
     );
-  } else {
-    return <EndScreen />;
+  } else if (opponentHealth <= 0) {
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+    gameClearMusic.play();
+    if (!delay) {
+      return null;
+    } else {
+      return <EndScreen playerList={playerList} />;
+    }
+    // return <EndScreen />;
   }
 }
 

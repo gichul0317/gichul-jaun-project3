@@ -32,7 +32,7 @@ function App() {
         {/* <GameScreen /> */}
         {/* {currentComponent == 1 && <StartScreen />}
         {currentComponent == 2 && <GameScreen />} */}
-        {/* <EndScreen/> */}
+        {/* <EndScreen /> */}
       </div>
       {/* <button
         onClick={() => {
@@ -41,7 +41,7 @@ function App() {
       >
         Start
       </button> */}
-      <Footer/>
+      <Footer />
     </div>
   );
 }

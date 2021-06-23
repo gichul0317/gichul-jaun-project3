@@ -24,8 +24,8 @@ function StartScreen() {
     if (userName !== '') {
       dbRef.push(userName);
       alert(`${userName} has been saved`);
+      // change view component state to display gamescreen
       setViewComponent(false);
-      // console.log(userName);
     } else {
       alert('Please Enter Your Name');
     }
@@ -72,7 +72,7 @@ function StartScreen() {
       </div>
     );
   } else {
-    return <GameScreen userName={userName} />;
+    return <GameScreen userName={userName} playerList={storedUserName} />;
   }
 }
 
