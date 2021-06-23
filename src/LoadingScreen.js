@@ -1,5 +1,3 @@
-import './LoadingScreen.css';
-
 function LoadingScreen() {
   return (
     <div className="loading">

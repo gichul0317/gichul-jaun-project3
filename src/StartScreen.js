@@ -1,4 +1,3 @@
-import './StartScreen.css';
 import { useEffect, useState } from 'react';
 import firebase from './firebase';
 import GameScreen from './GameScreen';

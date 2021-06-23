@@ -1,4 +1,3 @@
-import './GameScreen.css';
 import virus from './assets/virus.svg';
 import player from './assets/player.svg';
 import { useEffect, useState } from 'react';

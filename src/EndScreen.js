@@ -1,4 +1,3 @@
-import './EndScreen.css';
 import { useState } from 'react';
 import StartScreen from './StartScreen';
 import firebase from './firebase';
