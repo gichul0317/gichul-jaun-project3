@@ -1,39 +1,30 @@
 import './GameScreen.css';
 import virus from './assets/virus.svg';
 import player from './assets/player.svg';
-import { useEffect, useState } from 'react';
-import React from 'react';
+import { useState } from 'react';
 import gameMusic from './assets/game-playing.mp3';
-import endMusic from './assets/game-clear.mp3';
-
 import EndScreen from './EndScreen';
+import LoadingScreen from './LoadingScreen';
 
 const backgroundMusic = new Audio(gameMusic);
-const gameClearMusic = new Audio(endMusic);
 
 function GameScreen({ userName, playerList }) {
-  // console.log(playerList);
   // game console message state
   const [gameMessage, setGameMessage] = useState(
     `${userName}, what will you do?`
   );
   // vid monster health state
   const [opponentHealth, setOpponentHealth] = useState(100);
-  // player heatlh status
+  // player heatlh status state
   const [playerHealth, setPlayerHealth] = useState(100);
   // vid monster animation state
   const [vidAnimation, setVidAnimation] = useState(false);
   // player animation state
   const [playerAnimation, setPlayerAnimation] = useState(false);
-  // button disable sate
+  // button disable state
   const [disable, setDisable] = useState(false);
-
+  // delay state for loading screen
   const [delay, setDelay] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setDelay(true);
-    }, 5000);
-  }, [delay]);
 
   const socialDistancing = () => {
     if (opponentHealth !== 0) {
@@ -139,8 +130,6 @@ function GameScreen({ userName, playerList }) {
   console.log(opponentHealth);
 
   if (opponentHealth > 0) {
-    // setOpponentHealth(100);
-    // setPlayerHealth(100);
     backgroundMusic.play();
     return (
       <div className="game">
@@ -216,9 +205,11 @@ function GameScreen({ userName, playerList }) {
   } else if (opponentHealth <= 0) {
     backgroundMusic.pause();
     backgroundMusic.currentTime = 0;
-    gameClearMusic.play();
+    setTimeout(() => {
+      setDelay(true);
+    }, 2000);
     if (!delay) {
-      return null;
+      return <LoadingScreen />;
     } else {
       return <EndScreen playerList={playerList} />;
     }
@@ -227,10 +218,3 @@ function GameScreen({ userName, playerList }) {
 }
 
 export default GameScreen;
-
-// opponnent health 0
-// fix it using state
-// display endscreen
-// use storedUsername in startscreen.js
-// play game music
-// play end music

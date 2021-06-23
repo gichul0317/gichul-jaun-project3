@@ -16,7 +16,7 @@ h1 {
   letter-spacing: 0.25rem;
 }
 
-button {
+.start button {
   font-size: 0.7rem;
   text-transform: uppercase;
   padding: 10px 20px;

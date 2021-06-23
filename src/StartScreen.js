@@ -6,15 +6,15 @@ import GameScreen from './GameScreen';
 const dbRef = firebase.database().ref();
 
 function StartScreen() {
+  // user name state array for firebase
   const [storedUserName, setStoredUserName] = useState([]);
+  // user name state
   const [userName, setUserName] = useState('');
-
-  // component display
+  // component display state
   const [viewComponent, setViewComponent] = useState(true);
 
   // update user name state
   const userInput = function (event) {
-    // console.log(event.target.value);
     setUserName(event.target.value);
   };
 
@@ -42,10 +42,10 @@ function StartScreen() {
         }
       }
       setStoredUserName(newArr);
-      // console.log(storedUserName);
     });
   }, []);
 
+  // if view component state is true, rendering startscreen
   if (viewComponent) {
     return (
       <div className="start">
@@ -66,11 +66,9 @@ function StartScreen() {
             {userName === '' ? 'Loading...' : 'Start'}
           </button>
         </form>
-        {/* {storedUserName.map((item) => {
-          return <div key={item.key}>{item.name}</div>;
-        })} */}
       </div>
     );
+    // if view component state is false, rendering gamescreen
   } else {
     return <GameScreen userName={userName} playerList={storedUserName} />;
   }
@@ -78,7 +76,7 @@ function StartScreen() {
 
 export default StartScreen;
 
-// (storeUserInput, () => setViewComponent(false))
-
 // if same name exists in the dbRef, alert and ask
-// for another name
+// opacity effect in startscreen
+// delay endscreen rendering so player can see
+// virus animation
