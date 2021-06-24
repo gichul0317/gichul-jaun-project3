@@ -143,6 +143,10 @@ button:focus {
   justify-content: center;
 }
 
+.vidMonster-img img {
+  width: 100%;
+}
+
 .vidMonster-animation {
   animation: vidMonster-animation 1s infinite;
 }
@@ -185,6 +189,10 @@ button:focus {
   width: 45%;
   display: flex;
   justify-content: center;
+}
+
+.player-img img {
+  width: 100%;
 }
 
 .player-animation {
