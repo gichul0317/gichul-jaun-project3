@@ -22,14 +22,14 @@
 }
 
 h1 {
-  font-size: 1.4rem;
+  font-size: 36px;
   text-transform: uppercase;
-  line-height: 2.2rem;
-  letter-spacing: 0.25rem;
+  line-height: 30px;
+  letter-spacing: 3px;
 }
 
 button {
-  font-size: 0.7rem;
+  font-size: 16px;
   text-transform: uppercase;
   padding: 10px 20px;
   margin-top: 60px;
@@ -86,7 +86,7 @@ button:focus {
   border: none;
   border-bottom: 3px dotted;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 18px;
 }
 
 .start form {
@@ -107,7 +107,7 @@ button:focus {
 .vidMonster {
   height: 23%;
   display: flex;
-  font-size: 0.5rem;
+  font-size: 18px;
 }
 
 .vidMonster-info {
@@ -155,7 +155,7 @@ button:focus {
   height: 23%;
   display: flex;
   flex-direction: row-reverse;
-  font-size: 0.5rem;
+  font-size: 18px;
 }
 
 .player-info {
@@ -216,7 +216,7 @@ button:focus {
 }
 
 .menu-text p {
-  font-size: 0.85rem;
+  font-size: 18px;
 }
 
 .menu-buttons {
@@ -232,7 +232,7 @@ button:focus {
   padding: 0;
   border: none;
   border-radius: 5px;
-  font-size: 0.5rem;
+  font-size: 12px;
   height: 23%;
   background-color: #fff;
   -webkit-appearance: none;
@@ -330,11 +330,11 @@ button:focus {
     justify-content: space-evenly;
   }
   .vidMonster-text p {
-    font-size: 0.7rem;
+    font-size: 14px;
   }
   .vidMonster-health label,
   .vidMonster-health progress {
-    font-size: 0.6rem;
+    font-size: 12px;
   }
   .player {
     height: 37.5%;
@@ -346,11 +346,11 @@ button:focus {
     justify-content: space-evenly;
   }
   .player-text p {
-    font-size: 0.7rem;
+    font-size: 16px;
   }
   .player-health label,
   .player-health progress {
-    font-size: 0.6rem;
+    font-size: 12px;
   }
   .menu {
     height: 25%;
@@ -379,9 +379,14 @@ button:focus {
   padding: 20px;
 }
 
+.end h1 {
+  font-size: 28px;
+}
+
 .end ul {
   height: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -389,7 +394,7 @@ button:focus {
 
 .end li {
   list-style: none;
-  font-size: 0.7rem;
+  font-size: 12px;
 }
 
 .end li button {
@@ -407,7 +412,7 @@ button:focus {
 
 .end .play-btn {
   margin-top: 0;
-  font-size: 0.7rem;
+  font-size: 16px;
   text-transform: uppercase;
   padding: 10px 20px;
   border: none;
@@ -426,7 +431,7 @@ button:focus {
 }
 
 .loaindg h2 {
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 /* Footer css */
@@ -438,7 +443,7 @@ footer {
 }
 
 footer p {
-  font-size: 0.5rem;
+  font-size: 12px;
 }
 
 footer a {
