@@ -2,12 +2,12 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBQQbctpvrzhQW_qtImpD79uFi7zLsyCaQ',
-  authDomain: 'vid-monster.firebaseapp.com',
-  projectId: 'vid-monster',
-  storageBucket: 'vid-monster.appspot.com',
-  messagingSenderId: '713085845136',
-  appId: '1:713085845136:web:d146e185f7a9895a1ea215',
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_API_ID,
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
